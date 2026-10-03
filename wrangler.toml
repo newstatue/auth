@@ -11,3 +11,9 @@ binding = "DB"
 database_name = "auth-db"
 database_id = "8184c7f0-b03f-409c-b977-1c04f4e4015c"
 migrations_dir = "migrations"
+
+[[send_email]]
+name = "EMAIL"
+
+[vars]
+BETTER_AUTH_URL = "https://auth.evorsio.app"
