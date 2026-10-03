@@ -20,11 +20,11 @@
 	"private": true,
 	"scripts": {
 		"cf-typegen": "wrangler types --env-interface CloudflareBindings",
-		"deploy": "wrangler deploy",
+		"deploy": "pnpm db:migrate:remote && wrangler deploy",
 		"dev": "pnpm db:migrate:local && wrangler dev",
 		"db:migrate:local": "wrangler d1 migrations apply DB --local",
 		"db:migrate:remote": "wrangler d1 migrations apply DB --remote",
 		"test": "wrangler deploy --dry-run && vitest run --config tests/vitest.config.mts",
-		"authgen": "npx auth@latest generate --config ./src/cli/auth.cli.ts --output ./migrations/0001_better_auth.sql --yes"
-	}
+		"auth:generate": "npx auth@latest generate --config ./src/cli/auth.cli.ts --output ./migrations/0002_add_jwt.sql --yes",
+		"auth:migrate": "npx auth@latest migrate --config ./src/cli/auth.cli.ts --yes"	}
 }
