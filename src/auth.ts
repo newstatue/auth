@@ -14,7 +14,6 @@ export function createAuthConfig(env: CloudflareBindings) {
             twoFactor(),
             emailOTP({
                 overrideDefaultEmailVerification: true,
-                sendVerificationOnSignUp: true,
                 async sendVerificationOTP({ email, otp, type }) {
                     if (type !== "email-verification" && type !== "forget-password") {
                         return
