@@ -25,12 +25,13 @@ export function createAuthConfig(env: CloudflareBindings) {
                     const description =
                         type === "email-verification" ? "请使用以下验证码完成邮箱验证：" : "请使用以下验证码重置您的密码："
 
-                    await env.EMAIL.send({
-                        from: "no-reply@evorsio.app",
-                        to: email,
-                        subject,
-                        text: `${description} ${otp}`,
-                        html: `
+                    try{
+                        await env.EMAIL.send({
+                            from: "no-reply@evorsio.app",
+                            to: email,
+                            subject,
+                            text: `${description} ${otp}`,
+                            html: `
                               <h2>${subject}</h2>
                               <p>${description}</p>
                               <p style="font-size: 32px; font-weight: 700;">
@@ -38,7 +39,21 @@ export function createAuthConfig(env: CloudflareBindings) {
                               </p>
                               <p>如果这不是您的操作，请忽略此邮件。</p>
                               `,
-                    })
+                        })
+
+                        console.log("OTP 邮件发送成功", {
+                            email,
+                            type,
+                        })
+                    }catch(err) {
+                        console.error("OTP 邮件发送失败", {
+                            email,
+                            type,
+                            err,
+                        })
+
+                        throw err
+                    }
                 },
             }),
         ],

@@ -3,8 +3,11 @@ import {AppEnv} from "./types";
 import {createAuth} from "./auth";
 import { cors } from "hono/cors"
 import {trustedOrigins} from "./config";
+import { logger } from "hono/logger"
 
 const app = new Hono<AppEnv>()
+
+app.use(logger())
 
 app.use("/api/auth/*",
     cors({
