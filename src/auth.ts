@@ -8,6 +8,9 @@ export function createAuthConfig(env: CloudflareBindings) {
             enabled: true,
             requireEmailVerification: true,
         },
+        emailVerification: {
+            sendOnSignUp: false,
+        },
         trustedOrigins: trustedOrigins,
         plugins: [
             jwt(),
