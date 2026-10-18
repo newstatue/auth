@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth"
 import { emailOTP, jwt, twoFactor } from "better-auth/plugins"
-import {trustedOrigins} from "./config";
+import {getTrustedOrigins} from "./config";
 
 export function createAuthConfig(env: CloudflareBindings) {
     return {
@@ -11,7 +11,7 @@ export function createAuthConfig(env: CloudflareBindings) {
         emailVerification: {
             sendOnSignUp: false,
         },
-        trustedOrigins: trustedOrigins,
+        trustedOrigins: getTrustedOrigins(env),
         plugins: [
             jwt({
                 jwt:{

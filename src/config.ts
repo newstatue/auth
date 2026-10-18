@@ -1,5 +1,10 @@
-export const trustedOrigins = [
-    "http://localhost:5173",
-    "https://evorsio.app",
-    "https://www.evorsio.app",
-]
+export function getTrustedOrigins(
+    env: {
+        TRUSTED_ORIGINS?: string
+    }
+): string[] {
+    return (env.TRUSTED_ORIGINS ?? "")
+        .split(",")
+        .map((origin) => origin.trim())
+        .filter(Boolean)
+}
