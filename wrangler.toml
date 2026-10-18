@@ -19,3 +19,5 @@ name = "EMAIL"
 
 [vars]
 BETTER_AUTH_URL = "https://auth.evorsio.app"
+JWT_AUDIENCE = "evorsio-api"
+JWT_EXPIRATION_TIME = "15m"

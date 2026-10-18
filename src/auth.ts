@@ -13,7 +13,13 @@ export function createAuthConfig(env: CloudflareBindings) {
         },
         trustedOrigins: trustedOrigins,
         plugins: [
-            jwt(),
+            jwt({
+                jwt:{
+                    issuer: env.BETTER_AUTH_URL,
+                    audience: env.JWT_AUDIENCE,
+                    expirationTime: env.JWT_EXPIRATION_TIME,
+                }
+            }),
             twoFactor(),
             emailOTP({
                 overrideDefaultEmailVerification: true,

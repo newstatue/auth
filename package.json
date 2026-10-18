@@ -25,6 +25,6 @@
 		"db:migrate:local": "wrangler d1 migrations apply DB --local",
 		"db:migrate:remote": "wrangler d1 migrations apply DB --remote",
 		"test": "wrangler deploy --dry-run && vitest run --config tests/vitest.config.mts",
-		"auth:generate": "npx auth@latest generate --config ./src/cli/auth.cli.ts --output ./migrations/0002_add_jwt.sql --yes",
+		"auth:generate": "npx auth@latest generate --config ./src/cli/auth.cli.ts --output ./migrations/0003_add_jwt2.sql --yes",
 		"auth:migrate": "npx auth@latest migrate --config ./src/cli/auth.cli.ts --yes"	}
 }
